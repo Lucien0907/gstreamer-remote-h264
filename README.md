@@ -119,6 +119,9 @@ gst-launch-1.0 uvch264src device=/dev/video1 name=src auto-start=true src.vidsrc
 ```
 ## More Info
 http://oz9aec.net/software/gstreamer/using-the-logitech-c920-webcam-with-gstreamer-12
+
 https://answers.ros.org/question/295407/how-to-broadcast-hardware-encoded-video-from-the-logitech-c920-to-ros0
+
 https://gstreamer.freedesktop.org/documentation/installing/on-linux.html
+
 https://gstreamer.freedesktop.org/
