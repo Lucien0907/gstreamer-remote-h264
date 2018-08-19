@@ -64,6 +64,7 @@ cd orc
 ./autogen.sh --prefix=/home/user/gst/runtime && make && sudo make install
 ```
 3.Build opus 1.1 from source if you need it
+
 4.Build gstreamer using --prefix=/home/user/gst/runtime
 ```bash
 cd gstreamer
