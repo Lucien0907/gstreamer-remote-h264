@@ -107,6 +107,18 @@ sudo apt-get install gstreamer1.0-libav
 sudo apt-get install gstreamer1.0-doc 
 sudo apt-get install gstreamer1.0-tools
 ```
-# gstreamer-remote-h264
-Using gstreamer with c920 webcam to stream h264 video
+## Usage
+
+To start the receiver:
+```bash
+gst-launch-1.0 -v udpsrc port=6666 ! application/x-rtp, encoding-name=H264 ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! autovideosink
+```
+To start the sender:
+```bash
+gst-launch-1.0 uvch264src device=/dev/video1 name=src auto-start=true src.vidsrc ! video/x-h264,width=1280,height=720,framerate=30/1 ! h264parse ! rtph264pay ! udpsink host=127.0.0.1(Receiver's IP address) port=6666
+```
+## More Info
+http://oz9aec.net/software/gstreamer/using-the-logitech-c920-webcam-with-gstreamer-12
 https://answers.ros.org/question/295407/how-to-broadcast-hardware-encoded-video-from-the-logitech-c920-to-ros0
+https://gstreamer.freedesktop.org/documentation/installing/on-linux.html
+https://gstreamer.freedesktop.org/
