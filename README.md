@@ -95,6 +95,18 @@ cd gat-plugins-ugly
 cd gat-libav
 ./autogen.sh --enable-orc --prefix=/home/user/gst/runtime && make && sudo make install
 ```
+
+### Install gstreamer 1.2 usinng install package(only if you) failed building from source
+```bash
+sudo apt-get install libgstreamer1.0-0 
+sudo apt-get install gstreamer1.0-plugins-base 
+sudo apt-get install gstreamer1.0-plugins-good 
+sudo apt-get install gstreamer1.0-plugins-bad 
+sudo apt-get install gstreamer1.0-plugins-ugly 
+sudo apt-get install gstreamer1.0-libav 
+sudo apt-get install gstreamer1.0-doc 
+sudo apt-get install gstreamer1.0-tools
+```
 # gstreamer-remote-h264
 Using gstreamer with c920 webcam to stream h264 video
 https://answers.ros.org/question/295407/how-to-broadcast-hardware-encoded-video-from-the-logitech-c920-to-ros0
