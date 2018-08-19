@@ -21,12 +21,79 @@ Source the file
 ```bash
 $ . set_env.sh
 ```
+
 #### II. Dependencies
+
 * libx264-dev — Provides H.264 encoder.
 * libgudev-1.0-dev — Required for the new uvch264src
 * libusb-1.0-0-dev — Required for the new uvch264src
 * yasm — Assembler needed for gst-libav
+* autoconf
+* bison
+* gtk-doc-tools
 
+```bash
+sudo apt-get install libx264-dev
+sudo apt-get install libgudev-1.0-dev
+sudo apt-get install libusb-1.0-0-dev
+sudo apt-get install yasm
+sudo apt-get install autoconf
+sudo apt-get install flex bison
+sudo apt-get install gtk-doc-tools
+```
+
+#### III. Build Order
+Gstreamer source packages are available from: 
+[https://gstreamer.freedesktop.org/modules/](https://gstreamer.freedesktop.org/modules/)
+```bash
+git clone https://cgit.freedesktop.org/gstreamer/orc
+git clone https://cgit.freedesktop.org/gstreamer/gstreamer
+git clone https://cgit.freedesktop.org/gstreamer/gst-plugins-base
+git clone https://cgit.freedesktop.org/gstreamer/gst-plugins-good
+git clone https://cgit.freedesktop.org/gstreamer/gst-plugins-bad
+git clone https://cgit.freedesktop.org/gstreamer/gst-plugins-ugly
+git clone https://cgit.freedesktop.org/gstreamer/gst-libav
+```
+1.Setup environment
+```bash
+. set_env.sh
+```
+2.Build ORC using --prefix=/home/user/gst/runtime
+```bash
+cd orc
+./autogen.sh --prefix=/home/user/gst/runtime && make && sudo make install
+```
+3.Build opus 1.1 from source if you need it
+4.Build gstreamer using --prefix=/home/user/gst/runtime
+```bash
+cd gstreamer
+./autogen.sh --prefix=/home/user/gst/runtime && make && sudo make install
+```
+5.Build gst-plugins-base using --enable-orc --prefix=/home/user/gst/runtime
+```bash
+cd gat-plugins-base
+./autogen.sh --enable-orc --prefix=/home/user/gst/runtime && make && sudo make install
+```
+6.Build gst-plugins-good using --enable-orc --prefix=/home/user/gst/runtime
+```bash
+cd gat-plugins-good
+./autogen.sh --enable-orc --prefix=/home/user/gst/runtime && make && sudo make install
+```
+7.Build gst-plugins-bad using --enable-orc --prefix=/home/user/gst/runtime
+```bash
+cd gat-plugins-bad
+./autogen.sh --enable-orc --prefix=/home/user/gst/runtime && make && sudo make install
+```
+8.Build gst-plugins-ugly using --enable-orc --prefix=/home/user/gst/runtime
+```bash
+cd gat-plugins-ugly
+./autogen.sh --enable-orc --prefix=/home/user/gst/runtime && make && sudo make install
+```
+9.Build gst-libav using --enable-orc --prefix=/home/user/gst/runtime
+```bash
+cd gat-libav
+./autogen.sh --enable-orc --prefix=/home/user/gst/runtime && make && sudo make install
+```
 # gstreamer-remote-h264
 Using gstreamer with c920 webcam to stream h264 video
 https://answers.ros.org/question/295407/how-to-broadcast-hardware-encoded-video-from-the-logitech-c920-to-ros0
